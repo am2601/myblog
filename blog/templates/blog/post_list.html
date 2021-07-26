@@ -1,23 +1,11 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <title>Blog</title>
-</head>
-<body>
-    <div>
-        <h1><a href="/">Welcome to my first blog!</a></h1>
-    </div>
-    <div>
-        <br>
-        {% for post in posts%}
-            <div>
-                <h1><a href="">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
-                <br>
-             </div>
-        {% endfor %}
-    </div>
-</body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts%}
+        <div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <br>
+        </div>
+    {% endfor %}
+{% endblock %}
