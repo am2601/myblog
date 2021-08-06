@@ -23,6 +23,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
+    # user = models.ForeignKey('blog.User', on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -34,3 +35,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
