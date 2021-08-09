@@ -1,6 +1,5 @@
 from django import forms
 from .models import Post, Comment
-from django.conf import settings
 
 
 class PostForm(forms.ModelForm):
