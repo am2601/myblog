@@ -5,7 +5,7 @@
         <div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
              {% if post.image %}
-                <img src="{{ MEDIA_URL }}{{ post.image.url }}" alt="{{ post.image_alt }}"/>
+                <img src="{{ MEDIA_URL }}{{ post.post_image.url }}" alt="{{ post.image_alt }}"/>
              {% endif %}
             <p>{{ post.text|linebreaksbr }}</p>
             <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
