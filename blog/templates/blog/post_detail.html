@@ -17,9 +17,12 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         {% if post.post_image %}
-                <img src="{{ MEDIA_URL }}{{ post.post_image.url }}" alt="{{ post.image_alt }}"/>
+                <img src="{{ MEDIA_URL }}{{ post.post_image.url }}"{% if post.image_alt%} alt="{{ post.image_alt }}">{% else %}>{% endif %}
         {% endif %}
         <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.file %}
+            <a href="{{ post.file.url }}">file</a>
+        {% endif %}
     </div>
     {% if user.is_authenticated %}
         <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>

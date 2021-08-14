@@ -5,9 +5,14 @@
         <div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
              {% if post.post_image %}
-                <img src="{{ MEDIA_URL }}{{ post.post_image.url }}" alt="{{ post.image_alt }}">
+                <img src="{{ MEDIA_URL }}{{ post.post_image.url }}"{% if post.image_alt%} alt="{{ post.image_alt }}">{% else %}>{% endif %}
              {% endif %}
             <p>{{ post.text|linebreaksbr }}</p>
+            <p>
+            {% if post.file %}
+                <a href="{{ FILES_URL }}{{ post.file.url }}">file</a>
+            {% endif %}
+            </p>
             <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
             <br>
         </div>

@@ -88,3 +88,4 @@ def comment_remove(request, pk):
 
 def post_img(request, slug):
     return 'post_img/' + slug
+

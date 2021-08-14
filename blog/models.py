@@ -7,8 +7,10 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
-    post_image = models.ImageField(upload_to='post_img/')
-    image_alt = models.CharField(max_length=200)
+    post_image = models.ImageField(upload_to='post_img/', blank=True)
+    image_alt = models.CharField(max_length=200, blank=True)
+    # file = models.FileField(blank=True, upload_to='files')
+    file = models.FileField(upload_to=settings.FILES_ROOT, blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
