@@ -17,7 +17,7 @@ def registrate_user(request):
 
 def login_user(request):
     if request.method == "POST":
-        # form = AuthenticationForm(request.POST)
+        form = AuthenticationForm(request.POST)
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
