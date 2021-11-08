@@ -30,11 +30,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments', verbose_name='Статья')
     # user = models.ForeignKey('blog.User', on_delete=models.CASCADE, related_name='comments')
-    author = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+    author = models.CharField(max_length=200, verbose_name='Автор')
+    text = models.TextField(verbose_name='Текст')
+    created_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
     approved_comment = models.BooleanField(default=False)
 
     def approve(self):
@@ -43,4 +43,10 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+        ordering = ['-created_date']
 

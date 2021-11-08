@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 
 class FeedBack(models.Model):
-    email = models.CharField(max_length=60, verbose_name='Почта')
-    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    email = models.EmailField(max_length=70, verbose_name='Почта')
+    title = models.CharField(max_length=50, verbose_name='Заголовок')
     text = models.TextField(blank=True, verbose_name='Текст')
     created_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
 
@@ -13,4 +13,4 @@ class FeedBack(models.Model):
     class Meta:
         verbose_name = 'Обращение'
         verbose_name_plural = 'Обращения'
-        ordering = ['title']
+        ordering = ['-created_date']

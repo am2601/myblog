@@ -14,6 +14,7 @@
             {% if request.user.is_superuser %}
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                 <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="{% url 'leave_feedback' %}" class="top-menu">leave feedback</a>
                 <a href="/admin" class="top-menu">admin</a>
             {% endif %}
         {% else %}
