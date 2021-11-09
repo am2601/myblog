@@ -7,7 +7,8 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор')
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст', blank=True)
-    post_image = models.ImageField(upload_to='post_img/', blank=True, verbose_name='Изображение')
+    post_image = models.ImageField(upload_to='post_img/', blank=True, verbose_name='Изображение',
+                                   help_text='Размеры картинки 450x300')
     image_alt = models.CharField(max_length=200, blank=True, verbose_name='Атрибуты изображения')
     file = models.FileField(upload_to=settings.FILES_ROOT, blank=True, verbose_name='Файл')
     created_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
@@ -44,9 +45,7 @@ class Comment(models.Model):
     def __str__(self):
         return self.text
 
-
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
         ordering = ['-created_date']
-
